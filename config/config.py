@@ -28,9 +28,9 @@ TOPICS = [
 ]
 
 # --- Weather ---
-CITY       = "Vellore"
-LATITUDE   = 12.9165
-LONGITUDE  = 79.1325
+CITY       = os.getenv("WEATHER_CITY", "Vellore")
+LATITUDE   = float(os.getenv("WEATHER_LATITUDE", 12.9165))
+LONGITUDE  = float(os.getenv("WEATHER_LONGITUDE", 79.1325))
 
 # --- Humor mode ---
-HUMOR_MODE = "sarcastic"   # options: sarcastic | funny | roast | gen-z | professional
+HUMOR_MODE = os.getenv("HUMOR_MODE", "sarcastic")   # options: sarcastic | funny | roast | gen-z | professional

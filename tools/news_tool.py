@@ -2,7 +2,7 @@ import json
 import feedparser
 from pathlib import Path
 
-DOMAINS_FILE = Path(__file__).parent.parent / "config" / "domains.json"
+DOMAINS_FILE = Path(__file__).parent.parent / "config" / "domain.json"
 
 def fetch_news(topics: list[str], max_per_topic: int = 3) -> dict[str, list[dict]]:
     """
