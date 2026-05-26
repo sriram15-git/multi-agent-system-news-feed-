@@ -1,3 +1,4 @@
+import time
 from tools.llm_tool import ask_llm
 from config.config  import HUMOR_MODE
 from pathlib        import Path
@@ -71,6 +72,7 @@ Context: {context}
                 )
                 article["funny"] = funny
                 funny_news[topic].append(article)
+                time.sleep(10)
 
         print("[HumorAgent] Done.")
         return {

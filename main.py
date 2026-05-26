@@ -2,6 +2,9 @@ import argparse
 import sys
 from pathlib import Path
 
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 

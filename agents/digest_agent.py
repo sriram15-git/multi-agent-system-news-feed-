@@ -115,7 +115,7 @@ class DigestAgent:
         md_content = f"# ☀️ Good Morning, {recipient_name}!\n_{today}_\n\n"
         md_content += f"## 🌡️ Weather — {weather.get('city','Salem')}\n{weather_funny}\n"
         md_content += sections_md
-        md_path.write_text(md_content)
+        md_path.write_text(md_content, encoding="utf-8")
         print(f"[DigestAgent] Digest saved to {md_path}")
 
         return html

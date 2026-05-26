@@ -12,7 +12,7 @@ class NewsAgent:
         topics = topics or TOPICS
         print(f"[NewsAgent] Fetching news for {len(topics)} topics...")
 
-        news = fetch_news(topics, max_per_topic=3)
+        news = fetch_news(topics, max_per_topic=1)
 
         total = sum(len(v) for v in news.values())
         print(f"[NewsAgent] Collected {total} articles.")

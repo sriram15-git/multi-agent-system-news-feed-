@@ -1,3 +1,4 @@
+import time
 from tools.llm_tool import ask_llm
 from pathlib        import Path
 
@@ -33,6 +34,7 @@ class ResearchAgent:
                 article["context"] = context
                 enriched[topic].append(article)
                 print(f"  [ResearchAgent] Enriched: {article['title'][:60]}...")
+                time.sleep(10)
 
         print("[ResearchAgent] Done.")
         return enriched

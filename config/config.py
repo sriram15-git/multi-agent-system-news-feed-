@@ -22,7 +22,6 @@ TOPICS = [
     "Hollywood movies",
     "Tamil Nadu politics",
     "Indian cricket",
-    "ipl",
     "Tamil Nadu weather",
     "Tamil Nadu local news",
 ]
