@@ -1,0 +1,6 @@
+ollama
+feedparser
+requests
+apscheduler
+python-dotenv
+jinja2

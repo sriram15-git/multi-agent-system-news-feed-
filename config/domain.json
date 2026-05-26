@@ -1,0 +1,19 @@
+{
+  "Kollywood cinema": [
+    "https://www.behindwoods.com/rss/news.xml",
+    "https://feeds.feedburner.com/Filmibeat-Tamil"
+  ],
+  "Hollywood movies": [
+    "https://variety.com/feed/",
+    "https://www.hollywoodreporter.com/feed/"
+  ],
+  "Tamil Nadu politics": [
+    "https://feeds.feedburner.com/ndtvnews-south",
+    "https://www.thehindu.com/news/national/tamil-nadu/feeder/default.rss"
+  ],
+  "Artificial Intelligence": [
+    "https://feeds.feedburner.com/venturebeat/SBBR",
+    "https://techcrunch.com/category/artificial-intelligence/feed/"
+  ],
+  "India startups": ["https://yourstory.com/feed", "https://inc42.com/feed/"]
+}
