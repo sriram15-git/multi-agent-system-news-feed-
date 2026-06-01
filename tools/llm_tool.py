@@ -14,19 +14,43 @@ def ask_llm(prompt: str, system: str = "", model: str = None) -> str:
     gemini_key = os.getenv("GEMINI_API_KEY")
 
     if gemini_key:
-        # Targeted gemini-2.5-flash as the active model to resolve 404 errors
+    # Targeted gemini-2.5-flash as the active model to resolve 404 errors
         url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_key}"
         
-        # Combine system instruction and prompt for Gemini structure
-        full_prompt = f"System Instruction: {system}\n\nUser Prompt: {prompt}" if system else prompt
+        # 1. CRITICAL: Inject a strict completeness instruction to guarantee all sentences end naturally
+        completeness_instruction = "\n\nCRITICAL: Ensure your output is a fully complete thought, ends with a proper punctuation mark (period, exclamation, or question mark), and is NEVER truncated or cut off mid-sentence."
+        
+        raw_prompt = f"{prompt}{completeness_instruction}"
+        full_prompt = f"System Instruction: {system}\n\nUser Prompt: {raw_prompt}" if system else raw_prompt
+        
         payload = {
             "contents": [{
                 "parts": [{"text": full_prompt}]
             }],
             "generationConfig": {
-                "temperature": 0.8,
-                "maxOutputTokens": 512
-            }
+                "temperature": 0.7,  # 2. Lowered slightly to make generation more structured and complete
+                "maxOutputTokens": 1024
+            },
+            # Explicitly set safety thresholds to BLOCK_NONE to prevent the 
+            # safety guardrails from cutting off sarcastic/roast content mid-sentence.
+            "safetySettings": [
+                {
+                    "category": "HARM_CATEGORY_HARASSMENT",
+                    "threshold": "BLOCK_NONE"
+                },
+                {
+                    "category": "HARM_CATEGORY_HATE_SPEECH",
+                    "threshold": "BLOCK_NONE"
+                },
+                {
+                    "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                    "threshold": "BLOCK_NONE"
+                },
+                {
+                    "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                    "threshold": "BLOCK_NONE"
+                }
+            ]
         }
         
         max_retries = 5

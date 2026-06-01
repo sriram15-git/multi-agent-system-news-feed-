@@ -33,7 +33,7 @@ class ResearchAgent:
                 context = ask_llm(prompt)
                 article["context"] = context
                 enriched[topic].append(article)
-                print(f"  [ResearchAgent] Enriched: {article['title'][:60]}...")
+                print(f"  [ResearchAgent] Enriched: {article['title'][:100]}...")
                 time.sleep(10)
 
         print("[ResearchAgent] Done.")
