@@ -1,0 +1,37 @@
+name: Daily News Digest
+
+on:
+  schedule:
+    # Runs at 3:30 AM UTC = 9:00 AM IST every day
+    - cron: '30 3 * * *'
+  workflow_dispatch:     # Allow manual trigger from GitHub UI
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Daily Digest Pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
+          WEATHER_CITY: ${{ vars.WEATHER_CITY }}
+          WEATHER_LATITUDE: ${{ vars.WEATHER_LATITUDE }}
+          WEATHER_LONGITUDE: ${{ vars.WEATHER_LONGITUDE }}
+          HUMOR_MODE: ${{ vars.HUMOR_MODE }}
+        run: python main.py --now

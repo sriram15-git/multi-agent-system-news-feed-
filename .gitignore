@@ -17,11 +17,11 @@ __pycache__/
 logs/
 *.log
 
-# Output files
+# Output files (generated each run)
 output/
-*.csv
-*.json
-*.txt
+
+# Scratch / test files
+test_llm.py
 
 # IDE files
 .vscode/
@@ -42,4 +42,4 @@ dist/
 # Testing
 .pytest_cache/
 .coverage
-htmlcov/
+htmlcov/
