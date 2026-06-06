@@ -28,8 +28,7 @@ def ask_llm(prompt: str, system: str = "", model: str = None) -> str:
                 "parts": [{"text": full_prompt}]
             }],
             "generationConfig": {
-                "temperature": 0.7,  # 2. Lowered slightly to make generation more structured and complete
-                "maxOutputTokens": 1024
+                "temperature": 0.7  # Lowered slightly to make generation more structured and complete
             },
             # Explicitly set safety thresholds to BLOCK_NONE to prevent the 
             # safety guardrails from cutting off sarcastic/roast content mid-sentence.
