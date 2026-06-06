@@ -27,9 +27,19 @@ TOPICS = [
 ]
 
 # --- Weather ---
-CITY       = os.getenv("WEATHER_CITY", "Vellore")
-LATITUDE   = float(os.getenv("WEATHER_LATITUDE", 12.9165))
-LONGITUDE  = float(os.getenv("WEATHER_LONGITUDE", 79.1325))
+CITY       = os.getenv("WEATHER_CITY") or "Vellore"
+
+def _get_float_env(name, default):
+    val = os.getenv(name)
+    if not val or val.strip() == "":
+        return default
+    try:
+        return float(val)
+    except ValueError:
+        return default
+
+LATITUDE   = _get_float_env("WEATHER_LATITUDE", 12.9165)
+LONGITUDE  = _get_float_env("WEATHER_LONGITUDE", 79.1325)
 
 # --- Humor mode ---
-HUMOR_MODE = os.getenv("HUMOR_MODE", "sarcastic")   # options: sarcastic | funny | roast | gen-z | professional
+HUMOR_MODE = os.getenv("HUMOR_MODE") or "sarcastic"   # options: sarcastic | funny | roast | gen-z | professional
