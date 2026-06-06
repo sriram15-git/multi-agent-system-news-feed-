@@ -13,7 +13,7 @@ OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:8b")
 OLLAMA_HOST  = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 
 # --- Scheduler ---
-DAILY_HOUR   = int(os.getenv("DAILY_HOUR", 7))
+DAILY_HOUR   = int(os.getenv("DAILY_HOUR", 12))
 DAILY_MINUTE = int(os.getenv("DAILY_MINUTE", 0))
 
 # --- News topics ---
