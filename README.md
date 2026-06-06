@@ -6,13 +6,13 @@ A fully autonomous pipeline that fetches real-time weather and news, enriches he
 
 ## 🌟 Key Features
 
-* **Multi-Agent Pipeline:** Coordinated sequence of single-responsibility agents:
+- **Multi-Agent Pipeline:** Coordinated sequence of single-responsibility agents:
   $$\text{Weather} \longrightarrow \text{News} \longrightarrow \text{Research} \longrightarrow \text{Humor} \longrightarrow \text{Digest} \longrightarrow \text{Email}$$
-* **Sarcastic Commentator Personality:** Tailored to Tamil Nadu culture (with references to TASMAC, Chennai auto fares, EB bills, traffic, and more).
-* **Dual-Backend Support:** Automatically leverages the cloud-based Google Gemini 2.5 Flash API or falls back to a locally hosted Ollama model.
-* **Styled HTML Email:** Automatically sent to recipients via Gmail SMTP.
-* **100% Free Production Deployment:** Automated scheduler runs daily at 9:00 AM IST via GitHub Actions free-tier runner.
-* **Robust & Resilient:** Handles rate-limiting with exponential backoff and features safe fallbacks for empty configuration parameters.
+- **Sarcastic Commentator Personality:** Tailored to Tamil Nadu culture (with references to TASMAC, Chennai auto fares, EB bills, traffic, and more).
+- **Dual-Backend Support:** Automatically leverages the cloud-based Google Gemini 2.5 Flash API or falls back to a locally hosted Ollama model.
+- **Styled HTML Email:** Automatically sent to recipients via Gmail SMTP.
+- **100% Free Production Deployment:** Automated scheduler runs daily at 9:00 AM IST via GitHub Actions free-tier runner.
+- **Robust & Resilient:** Handles rate-limiting with exponential backoff and features safe fallbacks for empty configuration parameters.
 
 ---
 
@@ -54,15 +54,19 @@ multi-agent-system-news-feed/
 ## 🚀 Local Setup & Run
 
 ### 1. Prerequisites
+
 Make sure you have Python 3.11+ installed.
 
 ### 2. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 3. Setup Environment Variables
+
 Create a file named `.env` in the root directory and copy the contents from `.env.example`:
+
 ```env
 GEMINI_API_KEY=your_gemini_api_key
 GMAIL_ADDRESS=your_gmail@gmail.com
@@ -73,14 +77,17 @@ WEATHER_LATITUDE=12.9165
 WEATHER_LONGITUDE=79.1325
 HUMOR_MODE=sarcastic
 ```
-> *Note: For GMAIL_APP_PASSWORD, generate a 16-character App Password from Google Account → Security → 2-Step Verification → App Passwords.*
+
+> _Note: For GMAIL_APP_PASSWORD, generate a 16-character App Password from Google Account → Security → 2-Step Verification → App Passwords._
 
 ### 4. Run Immediately
+
 ```bash
 python main.py --now
 ```
 
 ### 5. Run Continuous Local Scheduler
+
 ```bash
 python main.py --schedule
 ```
@@ -93,10 +100,10 @@ This project runs 100% serverless on GitHub Actions. To deploy:
 
 1. Push this code to your GitHub repository.
 2. In GitHub, go to **Settings → Secrets and variables → Actions → Secrets** and add the following repository secrets:
-   * `GEMINI_API_KEY`
-   * `GMAIL_ADDRESS`
-   * `GMAIL_APP_PASSWORD`
-   * `RECIPIENTS`
+   - `GEMINI_API_KEY`
+   - `GMAIL_ADDRESS`
+   - `GMAIL_APP_PASSWORD`
+   - `RECIPIENTS`
 3. Optional configuration variables can be added as secrets or variables:
-   * `WEATHER_CITY`, `WEATHER_LATITUDE`, `WEATHER_LONGITUDE`, `HUMOR_MODE`
-4. The workflow in `.github/workflows/daily_digest.yml` will automatically trigger every day at **9:00 AM IST** (3:30 AM UTC). You can also run it manually from the **Actions** tab in GitHub at any time!
+   - `WEATHER_CITY`, `WEATHER_LATITUDE`, `WEATHER_LONGITUDE`, `HUMOR_MODE`
+4. The workflow in `.github/workflows/daily_digest.yml` will automatically trigger every day at **10:00 AM IST** (4:30 AM UTC). You can also run it manually from the **Actions** tab in GitHub at any time!
